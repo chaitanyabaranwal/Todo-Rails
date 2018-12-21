@@ -6,23 +6,6 @@
     .span2.pull-right
       = link_to 'New Task', new_task_path, class: 'btn btn-primary', remote: true
   %br
-  - if @tasks.empty?
-    %span.text-warning There are no tasks!
-  - else
-    %table.table.table-hover.table-bordered
-      %thead
-        %tr
-          %th Name
-          %th Due Date
-          %th Category
-          %th Completed
-      %tbody
-        - @tasks.each do |task|
-          %tr
-            %td
-              %strong= task.name
-            %td.text-info= task.due_date
-            %td.text-info= - Category.find(task.category_id).name
-            %td.text-info= task.completed
-
+#task-list.container
+  = render partial: 'tasks/task_list', locals: {tasks: @tasks}
 #modal.modal.fade

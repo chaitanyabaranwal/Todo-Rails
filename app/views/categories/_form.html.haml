@@ -1,0 +1,8 @@
+.modal-header
+  %h1 New Category
+= simple_form_for category, class: 'clearfix', remote: true do |f|
+  .modal-body
+    = f.input :name
+    = f.input :description
+  .modal-footer
+    = f.submit 'Save', class: 'btn btn-primary'

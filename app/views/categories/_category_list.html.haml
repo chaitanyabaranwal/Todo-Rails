@@ -1,0 +1,14 @@
+- if categories.empty?
+  %span.text-warning There are no categories!
+- else
+  %table.table.table-hover.table-bordered
+    %thead
+    %tr
+      %th Name
+      %th Description
+    %tbody
+    - categories.each do |category|
+      %tr
+      %td
+        %strong= category.name
+      %td.text-info= category.description

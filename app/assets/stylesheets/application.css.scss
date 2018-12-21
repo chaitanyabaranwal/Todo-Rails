@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+@import 'bootstrap';
+
+.hero-unit > p {
+    font-size: 100%;
+    font-weight: lighter;
+}
+
+.modal form {
+    margin-bottom: 0;
+}

@@ -10,5 +10,10 @@
   <%= @category.description %>
 </p>
 
+<h3>Products in this category</h3>
+<% Task.where(category_id: @category.id).each do |task| %>
+  <li><%= task.name %></li>
+<% end %>
+
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

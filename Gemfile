@@ -61,8 +61,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Enable HAML rendering instead of HTML
 gem 'haml'
 gem 'haml-rails'
+# Bootstrap plugin (need to update)
 gem 'bootstrap-sass', '~> 2.3.2.0'
+# Simplify form rendering
 gem 'simple_form'
+# Enable jquery in views
 gem 'jquery-rails'

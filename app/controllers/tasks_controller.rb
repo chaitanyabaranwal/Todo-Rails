@@ -15,16 +15,19 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   # GET /tasks/1/edit
   def edit
+    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.category_id = params[:category_id]
 
     respond_to do |format|
       if @task.save
@@ -40,6 +43,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    @task.category_id = params[:category_id]
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }

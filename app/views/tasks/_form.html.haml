@@ -3,7 +3,7 @@
 = simple_form_for task, class: 'clearfix' do |f|
   .modal-body
     = f.input :name
-    = f.input :due_date
+    = f.input :due_date, as: :string, input_html: {class: 'datepicker'}
     = f.input :completed
     = f.select :category_id, @categories
   .modal-footer

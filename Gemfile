@@ -70,3 +70,5 @@ gem 'bootstrap-sass', '~> 2.3.2.0'
 gem 'simple_form'
 # Enable jquery in views
 gem 'jquery-rails'
+# Datepicker for task form
+gem 'bootstrap-datepicker-rails'

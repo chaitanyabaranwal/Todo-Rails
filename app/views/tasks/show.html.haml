@@ -1,0 +1,21 @@
+%p#notice
+  = notice
+
+%p
+  %strong Name:
+  = @task.name
+
+%p
+  %strong Due date:
+  = @task.due_date
+
+%p
+  %strong Completed:
+  = @task.completed
+
+%p
+  %strong Category:
+  = @task.category_id
+
+= link_to 'Edit', edit_task_path(@task)
+= link_to 'Back', tasks_path

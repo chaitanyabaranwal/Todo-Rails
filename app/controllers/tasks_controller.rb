@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   # GET /tasks/1
@@ -28,7 +29,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @tasks = Task.all
+    @categories = Category.all.map{|c| [c.name, c.id]}
     @task.category_id = params[:category_id]
+    puts @task.valid?
+    puts @task.errors.messages
     @task.save
 
     # respond_to do |format|

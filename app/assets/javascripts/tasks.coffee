@@ -5,7 +5,7 @@
 $.fn.extend {
     integrateDatepicker: (selector) ->
         selector = selector || '.datepicker'
-        $(@).find(selector).datepicker()
+        $(@).find(selector).datepicker({format: 'yyyy-mm-dd'});
 }
 
 $(document).ready() -> $('body').integrateDatepicker()

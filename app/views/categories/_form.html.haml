@@ -1,5 +1,6 @@
 .modal-header
-  %h1 New Category
+  %h1
+    = category.new_record? ? 'New Category' : 'Edit Category'
 = simple_form_for category, class: 'clearfix', remote: true do |f|
   .modal-body
     = f.input :name

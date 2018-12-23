@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_tasks, only: [:create, :index, :destroy]
+  before_action :set_tasks, only: [:create, :index, :destroy, :update]
   before_action :set_categories, only: [:index, :new, :edit, :create]
 
   # GET /tasks
@@ -16,10 +16,12 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    render :show_form
   end
 
   # GET /tasks/1/edit
   def edit
+    render :show_form
   end
 
   # POST /tasks
@@ -28,6 +30,8 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.category_id = params[:category_id]
     @task.save
+
+    render :hide_form
 
     # respond_to do |format|
     #   if @task.save
@@ -44,15 +48,19 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     @task.category_id = params[:category_id]
-    respond_to do |format|
-      if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
+    @task.update(task_params)
+
+    render :hide_form
+    
+    # respond_to do |format|
+    #   if @task.update(task_params)
+    #     format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @task }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @task.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /tasks/1

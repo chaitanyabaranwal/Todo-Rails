@@ -6,6 +6,6 @@
     = f.input :name
     = f.input :due_date, as: :string, input_html: {class: 'datepicker'}
     = f.input :completed
-    = select_tag :category_id, options_for_select(@categories), :prompt => 'Select!'
+    = select_tag :category_id, options_for_select(@categories, task.category_id)
   .modal-footer
     = f.submit 'Save', class: 'btn btn-primary'

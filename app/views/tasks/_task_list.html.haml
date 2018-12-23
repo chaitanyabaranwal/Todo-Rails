@@ -8,11 +8,15 @@
         %th Due Date
         %th Category
         %th Completed
+        %th
     %tbody
       - tasks.each do |task|
         %tr
           %td
             %strong= task.name
           %td.text-info= task.due_date
-          %td.text-info= - Category.find(task.category_id).name
-          %td.text-info= task.completed
+          %td= - Category.find(task.category_id).name
+          %td.text-success= task.completed
+          %td
+            = link_to task_path(task), remote: true, method: :delete do
+              %i.icon-remove

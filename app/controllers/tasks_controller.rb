@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_tasks, only: [:create, :index, :destroy]
+  before_action :set_categories, only: [:index, :new, :edit, :create]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
-    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   # GET /tasks/1
@@ -16,23 +16,17 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
-    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   # GET /tasks/1/edit
   def edit
-    @categories = Category.all.map{|c| [c.name, c.id]}
   end
 
   # POST /tasks
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-    @tasks = Task.all
-    @categories = Category.all.map{|c| [c.name, c.id]}
     @task.category_id = params[:category_id]
-    puts @task.valid?
-    puts @task.errors.messages
     @task.save
 
     # respond_to do |format|
@@ -72,6 +66,16 @@ class TasksController < ApplicationController
   end
 
   private
+    # Get all categories
+    def set_categories
+      @categories = Category.all.map{|c| [c.name, c.id]}
+    end
+
+    # Get all tasks
+    def set_tasks
+      @tasks = Task.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])

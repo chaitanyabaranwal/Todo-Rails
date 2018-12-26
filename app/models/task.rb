@@ -3,7 +3,6 @@ class Task < ApplicationRecord
 
     validates :name, presence: true, length: { minimum: 5 }
     validates :category_id, presence: true
-    validates :completed, presence: true
     validate :due_date_in_future
 
     private

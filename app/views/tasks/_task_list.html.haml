@@ -6,7 +6,8 @@
       %tr
         %th Name
         %th Due Date
-        %th Category
+        - if show_cat
+          %th Category
         %th Completed
         %th
         %th
@@ -16,7 +17,8 @@
           %td
             %strong= task.name
           %td.text-info= task.due_date
-          %td= - Category.find(task.category_id).name
+          - if show_cat
+            %td= - Category.find(task.category_id).name
           %td.text-success= task.completed
           %td
             = link_to 'Delete', task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task '#{task.name}'?"}

@@ -10,7 +10,7 @@
         %th
     %tbody
     - categories.each do |category|
-      %tr.clickable-row{ :data-href => "categories/#{category.id}" }
+      %tr
         %td
           %strong= category.name
         %td.text-info= category.description

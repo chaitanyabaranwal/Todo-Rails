@@ -1,7 +1,7 @@
 .container
   .row
-    .span2.pull-right
-      = link_to 'New Task', new_task_path, class: 'btn btn-primary', remote: true
+    .span7
+      %h2= @category.name
   %br
 #task-list.container
   = render partial: 'tasks/task_list', locals: {tasks: Task.where(category_id: @category.id), show_cat: false}

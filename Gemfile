@@ -64,11 +64,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Enable HAML rendering instead of HTML
 gem 'haml'
 gem 'haml-rails'
-# Bootstrap plugin (need to update)
-gem 'bootstrap-sass', '~> 2.3.2.0'
+# Bootstrap plugins
+gem 'bootstrap'
+gem 'bootstrap-datepicker-rails'
 # Simplify form rendering
 gem 'simple_form'
 # Enable jquery in views
 gem 'jquery-rails'
-# Datepicker for task form
-gem 'bootstrap-datepicker-rails'
+# Awesome font
+gem 'font-awesome-sass'

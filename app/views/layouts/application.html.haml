@@ -6,15 +6,11 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .row-fluid
-      .span10.offset1
-        .hero-unit.text-center
-          %h1
-            ToDo
-          %p
-            A simple todo app written in rails :)
-          %br
-          = link_to 'Tasks', tasks_path, class: 'btn-large btn-success'
-          = link_to 'Categories', categories_path, class: 'btn-large btn-success'
-    = yield
+    %nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+      %a{ :href => "", :class => "navbar-brand" } TODO
+      .text-center
+        = link_to 'Tasks', tasks_path, class: 'btn btn-success'
+        = link_to 'Categories', categories_path, class: 'btn btn-success'
+    .container.pt-5
+      = yield
 

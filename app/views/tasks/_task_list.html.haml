@@ -2,7 +2,7 @@
   %span.text-warning There are no tasks!
 - else
   %table.table.table-hover
-    %thead
+    %thead.thead-light
       %tr
         %th Name
         %th Due Date
@@ -19,8 +19,6 @@
           %td= - Category.find(task.category_id).name
           %td.text-success= task.completed
           %td
-            = link_to task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task '#{task.name}'?"} do
-              %i.icon-remove
+            = link_to 'Delete', task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task '#{task.name}'?"}
           %td
-            = link_to edit_task_path(task), remote: true do
-              %i.icon-edit
+            = link_to 'Edit', edit_task_path(task), remote: true

@@ -1,9 +1,11 @@
-.modal-header
-  %h1
-    = category.new_record? ? 'New Category' : 'Edit Category'
-= simple_form_for category, class: 'clearfix', remote: true do |f|
-  .modal-body
-    = f.input :name
-    = f.input :description
-  .modal-footer
-    = f.submit 'Save', class: 'btn btn-primary'
+.modal-dialog
+  .modal-content
+    .modal-header
+      %h2
+        = category.new_record? ? 'New Category' : 'Edit Category'
+    = simple_form_for category, class: 'clearfix', remote: true do |f|
+      .modal-body
+        = f.input :name
+        = f.input :description
+      .modal-footer
+        = f.submit 'Save', class: 'btn btn-primary'

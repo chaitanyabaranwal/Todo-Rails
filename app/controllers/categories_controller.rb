@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
   before_action :set_categories, only: [:index, :create, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_tasks
 
   # GET /categories
   # GET /categories.json
@@ -77,6 +78,11 @@ class CategoriesController < ApplicationController
       @categories = Category.accessible_by(current_ability)
     end
 
+    # Get all tasks
+    def set_tasks
+      @tasks = Task.accessible_by(current_ability)
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
@@ -84,6 +90,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :description)
+      params.require(:category).permit(:name, :description, :task_ids => [])
     end
 end

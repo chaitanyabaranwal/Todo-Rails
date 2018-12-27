@@ -29,8 +29,9 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
-    @task.category_id = params[:category_id]
     @task.user = current_user
+    puts @task.valid?
+    puts @task.errors.messages
     @task.save
 
     render :hide_form
@@ -49,7 +50,6 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task.category_id = params[:category_id]
     @task.update(task_params)
 
     render :hide_form
@@ -78,7 +78,7 @@ class TasksController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.accessible_by(current_ability).map{|c| [c.name, c.id]}
+      @categories = Category.accessible_by(current_ability)
     end
 
     # Get all tasks
@@ -93,6 +93,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :due_date, :completed, :category_id)
+      params.require(:task).permit(:name, :due_date, :completed, :category_ids => [])
     end
 end

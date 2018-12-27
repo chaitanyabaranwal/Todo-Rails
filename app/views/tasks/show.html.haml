@@ -13,9 +13,5 @@
   %strong Completed:
   = @task.completed
 
-%p
-  %strong Category:
-  = @task.category_id
-
 = link_to 'Edit', edit_task_path(@task)
 = link_to 'Back', tasks_path

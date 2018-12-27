@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-    has_many :tasks
+    has_and_belongs_to_many :tasks
     belongs_to :user
 
     validates :name, presence: true, length: {minimum: 5}

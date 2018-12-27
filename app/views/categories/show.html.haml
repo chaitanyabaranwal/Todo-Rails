@@ -4,5 +4,5 @@
       %h2= @category.name
   %br
 #task-list.container
-  = render partial: 'tasks/task_list', locals: {tasks: Task.where(category_id: @category.id), show_cat: false}
+  = render partial: 'tasks/task_list', locals: {tasks: @category.tasks, show_cat: false}
 #modal.modal.fade

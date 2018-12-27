@@ -1,9 +1,8 @@
 class Task < ApplicationRecord
-    belongs_to :category
+    has_and_belongs_to_many :categories
     belongs_to :user
 
     validates :name, presence: true, length: { minimum: 5 }
-    validates :category_id, presence: true
     validate :due_date_in_future
 
     private

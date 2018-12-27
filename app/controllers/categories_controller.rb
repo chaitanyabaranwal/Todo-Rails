@@ -27,6 +27,7 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+    @category.user = current_user
     @category.save
 
     render :hide_form

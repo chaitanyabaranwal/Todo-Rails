@@ -29,8 +29,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.category_id = params[:category_id]
-    puts @task.valid?
-    puts @task.errors.messages
+    @task.user = current_user
     @task.save
 
     render :hide_form

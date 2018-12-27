@@ -8,7 +8,10 @@
     %li.dropdown.nav-item
       %a.dropdown-toggle{ :href => '#', :class => 'btn btn-secondary dropdown-toggle', 'data-toggle' => 'dropdown', :id => 'dropdownMenuLink',
           'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
-        Profile
+        - if user_signed_in?
+          = current_user.username
+        - else
+          Profile
         %span.caret
       .dropdown-menu.dropdown-menu-right{ :aria-labelledBy => 'dropdownMenuLink'}
         - if user_signed_in?

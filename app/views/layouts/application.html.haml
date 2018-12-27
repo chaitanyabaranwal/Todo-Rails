@@ -6,11 +6,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
-      %a{ :href => "", :class => "navbar-brand" } TODO
-      .text-center
-        = link_to 'Tasks', tasks_path, class: 'btn btn-success'
-        = link_to 'Categories', categories_path, class: 'btn btn-success'
+    = render partial: 'layouts/navbar'
     .container.pt-5
       = yield
 

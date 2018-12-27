@@ -1,0 +1,22 @@
+%nav.navbar.navbar-expand-sm.bg-dark.navbar-dark
+  %a{ :href => "", :class => "navbar-brand" } TODO
+  %ul.navbar-nav
+    %li.nav-item
+      = link_to 'Tasks', tasks_path, class: 'btn btn-success'
+      = link_to 'Categories', categories_path, class: 'btn btn-success'
+  %ul.navbar-nav.ml-auto
+    %li.dropdown.nav-item
+      %a.dropdown-toggle{ :href => '#', :class => 'btn btn-secondary dropdown-toggle', 'data-toggle' => 'dropdown', :id => 'dropdownMenuLink',
+          'role' => 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false' }
+        Profile
+        %span.caret
+      .dropdown-menu.dropdown-menu-right{ :aria-labelledBy => 'dropdownMenuLink'}
+        - if user_signed_in?
+          = link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item'
+        - else
+          = link_to 'Sign Up', new_user_registration_path, class: 'dropdown-item'
+          = link_to 'Login', new_user_session_path, class: 'dropdown-item'
+        - if user_signed_in?
+          %hr
+          = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+        

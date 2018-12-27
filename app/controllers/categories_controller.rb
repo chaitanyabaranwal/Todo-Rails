@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_categories, only: [:index, :create, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
@@ -73,7 +74,7 @@ class CategoriesController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.all
+      @categories = Category.accessible_by(current_ability)
     end
 
     # Use callbacks to share common setup or constraints between actions.

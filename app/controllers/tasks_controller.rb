@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_tasks, only: [:create, :index, :destroy, :update]
   before_action :set_categories, only: [:index, :new, :edit, :create]
@@ -77,12 +78,12 @@ class TasksController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.all.map{|c| [c.name, c.id]}
+      @categories = Category.accessible_by(current_ability).map{|c| [c.name, c.id]}
     end
 
     # Get all tasks
     def set_tasks
-      @tasks = Task.all
+      @tasks = Task.accessible_by(current_ability)
     end
 
     # Use callbacks to share common setup or constraints between actions.

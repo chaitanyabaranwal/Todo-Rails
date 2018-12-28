@@ -6,6 +6,7 @@
       %tr
         %th Name
         %th Description
+        %th Tasks
         %th
         %th
     %tbody
@@ -14,6 +15,7 @@
         %td
           %strong= category.name
         %td.text-info= category.description
+        %td= category.tasks.map {|t| t.name}.join(', ')
         %td
           = link_to 'Delete', category_path(category), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete category '#{category.name}'?"}
         %td

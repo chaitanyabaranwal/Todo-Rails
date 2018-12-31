@@ -70,7 +70,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml'
 gem 'haml-rails'
 # Bootstrap plugins
-gem 'bootstrap'
+gem 'bootstrap', '>= 4.1.2'
 gem 'bootstrap-datepicker-rails'
 # Simplify form rendering
 gem 'simple_form'

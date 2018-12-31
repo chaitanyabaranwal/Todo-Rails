@@ -1,24 +1,15 @@
-# README
+# CVWO Assignment 2018/19 - Todo App on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Working copy of the app: https://gentle-coast-15254.herokuapp.com
 
-Things you may want to cover:
 
-* Ruby version
+#### Name: Chaitanya Baranwal
+#### Matriculation Number: A0184716X
 
-* System dependencies
+##### Rails working console picture:
 
-* Configuration
+![Rails start-up screen](Mid-Assignment-Submission/Rails_Working_Screenshot.png)
 
-* Database creation
+##### App screenshot:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![App screenshot](Mid-Assignment-Submission/App_Screenshot.png)

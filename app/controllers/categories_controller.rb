@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  load_and_authorize_resource
   before_action :set_categories, only: [:index, :create, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_tasks
@@ -29,7 +28,6 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-    @category.user = current_user
     @category.save
 
     render :hide_form
@@ -75,12 +73,12 @@ class CategoriesController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.accessible_by(current_ability)
+      @categories = Category.all
     end
 
     # Get all tasks
     def set_tasks
-      @tasks = Task.accessible_by(current_ability)
+      @tasks = Task.all
     end
 
     # Use callbacks to share common setup or constraints between actions.

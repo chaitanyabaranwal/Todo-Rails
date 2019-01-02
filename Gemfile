@@ -79,6 +79,4 @@ gem 'jquery-rails'
 # Awesome font
 gem 'font-awesome-sass'
 # For authentication and authorization
-gem 'devise'
-gem 'cancancan'
-gem 'rolify'
+gem 'bcrypt'

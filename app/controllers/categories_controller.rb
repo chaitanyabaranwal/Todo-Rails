@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user
   before_action :set_categories, only: [:index, :create, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :set_tasks
@@ -89,5 +90,12 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
       params.require(:category).permit(:name, :description, :task_ids => [])
+    end
+
+    # Authenticate user then show content
+    def authenticate_user
+      if !current_user
+          redirect_to login_path
+      end
     end
 end

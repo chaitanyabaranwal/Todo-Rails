@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_tasks, only: [:create, :index, :destroy, :update]
   before_action :set_categories, only: [:index, :new, :edit, :create]
@@ -92,5 +93,12 @@ class TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:name, :due_date, :completed, :category_ids => [])
+    end
+
+    # Authenticate user then show content
+    def authenticate_user
+      if !current_user
+          redirect_to login_path
+      end
     end
 end

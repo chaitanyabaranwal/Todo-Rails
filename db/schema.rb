@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_01_03_064952) do
     t.string "name"
     t.date "due_date"
     t.boolean "completed"
-    t.string "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

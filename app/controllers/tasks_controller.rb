@@ -29,6 +29,7 @@ class TasksController < ApplicationController
   # POST /tasks.json
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
     puts @task.valid?
     puts @task.errors.messages
     @task.save
@@ -77,12 +78,12 @@ class TasksController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.all
+      @categories = Category.where(user: current_user)
     end
 
     # Get all tasks
     def set_tasks
-      @tasks = Task.all
+      @tasks = Task.where(user: current_user)
     end
 
     # Use callbacks to share common setup or constraints between actions.

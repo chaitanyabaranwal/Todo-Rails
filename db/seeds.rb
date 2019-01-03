@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-category1 = Category.create(name: "test_category_1", description: "test_category")
-category2 = Category.create(name: "test_category_2", description: "test_category")
+user1 = User.create(email: "bruce@gmail.com", password: "password1234", password_confirmation: "password1234")
+user2 = User.create(email: "nicole@gmail.com", password: "password1234", password_confirmation: "password1234")
 
-task1 = Task.create(name: "test_task_1")
+category1 = Category.create(name: "test_category_1", description: "test_category", user: user1)
+category2 = Category.create(name: "test_category_2", description: "test_category", user: user1)
+
+task1 = Task.create(name: "test_task_1", user: user1)
 task1.categories << [category1, category2]

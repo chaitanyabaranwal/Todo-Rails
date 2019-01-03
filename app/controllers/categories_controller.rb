@@ -29,6 +29,7 @@ class CategoriesController < ApplicationController
   # POST /categories.json
   def create
     @category = Category.new(category_params)
+    @category.user = current_user
     @category.save
 
     render :hide_form
@@ -74,12 +75,12 @@ class CategoriesController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.all
+      @categories = Category.where(user: current_user)
     end
 
     # Get all tasks
     def set_tasks
-      @tasks = Task.all
+      @tasks = Task.where(user: current_user)
     end
 
     # Use callbacks to share common setup or constraints between actions.

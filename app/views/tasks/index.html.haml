@@ -4,5 +4,5 @@
       = link_to 'New Task', new_task_path, class: 'btn btn-primary', remote: true
   %br
 #task-list.container
-  = render partial: 'tasks/task_list', locals: {tasks: @tasks, show_cat: true}
+  = render partial: 'tasks/task_list', locals: {tasks: @tasks}
 #modal.modal.fade

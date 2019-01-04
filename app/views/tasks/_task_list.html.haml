@@ -17,7 +17,9 @@
             %strong= task.name
           %td.text-info= task.due_date
           %td= task.categories.map {|c| c.name}.join(', ')
-          %td.text-success= task.completed
+          %td
+            .container
+              = check_box_tag(:completed, !task.completed, task.completed, data: { remote: true, url: url_for(action: :toggle, id: task.id), method: :post })
           %td
             = link_to 'Delete', task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task '#{task.name}'?"}
           %td

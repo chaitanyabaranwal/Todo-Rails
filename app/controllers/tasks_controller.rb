@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :toggle]
   before_action :set_tasks, only: [:create, :index, :destroy, :update]
   before_action :set_categories, only: [:index, :new, :edit, :create]
 
@@ -73,6 +73,11 @@ class TasksController < ApplicationController
       format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # Mark task as completed
+  def toggle
+    @task.update_attributes(:completed => params[:completed])
   end
 
   private

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :categories, :except => [:show]
-  resources :tasks, :except => [:show]
+  resources :tasks, :except => [:show] do
+    member do
+      post 'toggle'
+    end
+  end
 
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'

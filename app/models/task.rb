@@ -5,6 +5,14 @@ class Task < ApplicationRecord
     validates :name, presence: true, length: { minimum: 5 }
     validate :due_date_in_future
 
+    def self.search(term)
+        if term
+            where('name LIKE ?', "%#{term}%").order('id DESC')
+        else
+            all.order('id DESC')
+        end
+    end
+
     private
     def due_date_in_future
         if !due_date.blank? && due_date < Date.today

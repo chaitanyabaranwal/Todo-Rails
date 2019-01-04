@@ -75,12 +75,12 @@ class CategoriesController < ApplicationController
   private
     # Get all categories
     def set_categories
-      @categories = Category.where(user: current_user)
+      @categories = Category.where(user: current_user).search(params[:term])
     end
 
     # Get all tasks
     def set_tasks
-      @tasks = Task.where(user: current_user)
+      @tasks = Task.where(user: current_user).search(params[:term])
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -90,7 +90,7 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:name, :description, :task_ids => [])
+      params.require(:category).permit(:name, :description, :term, :task_ids => [])
     end
 
     # Authenticate user then show content

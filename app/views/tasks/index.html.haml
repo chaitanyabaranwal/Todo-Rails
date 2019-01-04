@@ -1,8 +1,11 @@
 .container
   .row
-    .span2.pull-right
+    .span2.mr-auto
       = link_to 'New Task', new_task_path, class: 'btn btn-primary', remote: true
   %br
+  = form_tag(tasks_path, method: :get) do
+    = text_field_tag :term, params[:term]
+    = submit_tag 'Search', name: nil
 #task-list.container
   = render partial: 'tasks/task_list', locals: {tasks: @tasks}
 #modal.modal.fade

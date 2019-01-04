@@ -88,7 +88,7 @@ class TasksController < ApplicationController
 
     # Get all tasks
     def set_tasks
-      @tasks = Task.where(user: current_user)
+      @tasks = Task.where(user: current_user).search(params[:term])
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -98,7 +98,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :due_date, :completed, :category_ids => [])
+      params.require(:task).permit(:name, :due_date, :user, :completed, :term, :category_ids => [])
     end
 
     # Authenticate user then show content

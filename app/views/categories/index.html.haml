@@ -1,11 +1,12 @@
 .container
   .row
-    .span2.pull-right
+    .span2.mr-auto
       = link_to 'New Category', new_category_path, class: 'btn btn-primary', remote: true
+    .form-group.form-horizontal.form-inline
+      = form_tag(categories_path, method: :get, role: 'form') do
+        = text_field_tag :term, params[:term], class: 'form-control'
+        = submit_tag 'Search', name: nil, class: 'btn btn-secondary'
   %br
-  = form_tag(categories_path, method: :get) do
-    = text_field_tag :term, params[:term]
-    = submit_tag 'Search', name: nil
 #category-list.container
   = render partial: 'categories/category_list', locals: {categories: @categories}
 #modal.modal.fade

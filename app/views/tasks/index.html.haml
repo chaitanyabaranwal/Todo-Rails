@@ -2,10 +2,11 @@
   .row
     .span2.mr-auto
       = link_to 'New Task', new_task_path, class: 'btn btn-primary', remote: true
+    .form-group.form-horizontal.form-inline
+      = form_tag(tasks_path, method: :get, role: 'form') do
+        = text_field_tag :term, params[:term], class: 'form-control'
+        = submit_tag 'Search', name: nil, class: 'btn btn-secondary'
   %br
-  = form_tag(tasks_path, method: :get) do
-    = text_field_tag :term, params[:term]
-    = submit_tag 'Search', name: nil
 #task-list.container
   = render partial: 'tasks/task_list', locals: {tasks: @tasks}
 #modal.modal.fade

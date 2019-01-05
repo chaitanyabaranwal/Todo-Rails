@@ -1,22 +1,22 @@
-- if categories.empty?
-  %span.text-warning There are no categories!
-- else
-  %table.table.table-hover
-    %thead.thead-light
-      %tr
-        %th Name
-        %th Description
-        %th Tasks
-        %th
-        %th
-    %tbody
-    - categories.each do |category|
-      %tr
-        %td
-          %strong= category.name
-        %td.text-info= category.description
-        %td= category.tasks.map {|t| t.name}.join(', ')
-        %td
-          = link_to 'Delete', category_path(category), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete category '#{category.name}'?"}
-        %td
-          = link_to 'Edit', edit_category_path(category), remote: true
+%table.table.table-hover
+  %thead.thead-light
+    %tr
+      %th Name
+      %th Description
+      %th Tasks
+      %th
+      %th
+  %tbody
+    - if categories.empty?
+      %td.text-warning There are no categories!
+    - else
+      - categories.each do |category|
+        %tr
+          %td
+            %strong= category.name
+          %td.text-info= category.description
+          %td= category.tasks.map {|t| t.name}.join(', ')
+          %td
+            = link_to 'Delete', category_path(category), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete category '#{category.name}'?"}
+          %td
+            = link_to 'Edit', edit_category_path(category), remote: true

@@ -1,16 +1,16 @@
-- if tasks.empty?
-  %span.text-warning There are no tasks!
-- else
-  %table.table.table-hover
-    %thead.thead-light
-      %tr
-        %th Name
-        %th Due Date
-        %th Categories
-        %th Completed
-        %th
-        %th
-    %tbody
+%table.table.table-hover
+  %thead.thead-light
+    %tr
+      %th Name
+      %th Due Date
+      %th Categories
+      %th Completed
+      %th
+      %th
+  %tbody
+    - if tasks.empty?
+      %td.text-warning There are no tasks!
+    - else
       - tasks.each do |task|
         %tr
           %td

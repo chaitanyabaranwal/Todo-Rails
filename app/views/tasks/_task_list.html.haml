@@ -16,7 +16,9 @@
           %td
             %strong= task.name
           %td.text-info= task.due_date
-          %td= task.categories.map {|c| c.name}.join(', ')
+          %td
+            - task.categories.each do |c|
+              %span.badge.badge-pill.badge-dark= c.name
           %td
             .container
               = check_box_tag(:completed, !task.completed, task.completed, data: { remote: true, url: url_for(action: :toggle, id: task.id), method: :post })

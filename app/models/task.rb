@@ -2,7 +2,7 @@ class Task < ApplicationRecord
     has_and_belongs_to_many :categories
     belongs_to :user
 
-    validates :name, presence: true, length: { minimum: 5 }
+    validates :name, presence: true, length: { minimum: 5, maximum: 30 }
     validate :due_date_in_future
 
     def self.search(term)

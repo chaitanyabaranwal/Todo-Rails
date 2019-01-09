@@ -30,39 +30,26 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = current_user
-    puts @task.valid?
-    puts @task.errors.messages
-    @task.save
 
-    render :hide_form
-
-    # respond_to do |format|
-    #   if @task.save
-    #     format.html { redirect_to tasks_path, notice: 'Task was successfully created.' }
-    #     format.json { render :show, status: :created, location: @task }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @task.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @task.save
+        format.js { render :hide_form }
+      else
+        format.js
+      end
+    end
   end
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task.update(task_params)
-
-    render :hide_form
-    
-    # respond_to do |format|
-    #   if @task.update(task_params)
-    #     format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-    #     format.json { render :show, status: :ok, location: @task }
-    #   else
-    #     format.html { render :edit }
-    #     format.json { render json: @task.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @task.update(task_params)
+        format.js { render :hide_form }
+      else
+        format.js
+      end
+    end
   end
 
   # DELETE /tasks/1
@@ -70,14 +57,16 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
     end
   end
 
   # Mark task as completed
   def toggle
     @task.update_attributes(:completed => params[:completed])
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

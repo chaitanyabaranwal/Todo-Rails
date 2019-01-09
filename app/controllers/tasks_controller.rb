@@ -35,7 +35,7 @@ class TasksController < ApplicationController
       if @task.save
         format.js { render :hide_form }
       else
-        format.js
+        format.js { render :show_form }
       end
     end
   end
@@ -47,7 +47,7 @@ class TasksController < ApplicationController
       if @task.update(task_params)
         format.js { render :hide_form }
       else
-        format.js
+        format.js { render :show_form }
       end
     end
   end

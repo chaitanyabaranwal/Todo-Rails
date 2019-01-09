@@ -5,7 +5,6 @@
         = category.new_record? ? 'New Category' : 'Edit Category'
     = simple_form_for category, class: 'clearfix', remote: true do |f|
       .modal-body
-        = f.error_notification
         = f.input :name
         = f.input :description
       .modal-footer

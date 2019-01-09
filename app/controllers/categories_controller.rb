@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
       if @category.save
         format.js { render :hide_form }
       else
-        format.js
+        format.js { render :show_form }
       end
     end
   end
@@ -47,7 +47,7 @@ class CategoriesController < ApplicationController
       if @category.update(category_params)
         format.js { render :hide_form }
       else
-        format.js
+        format.js { render :show_form }
       end
     end
   end

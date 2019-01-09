@@ -12,4 +12,5 @@
 
   .form-actions
     = f.submit (@user.new_record? ? 'Create User' : 'Save User'), class: 'btn btn-success'
-    = link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+    - if !@user.new_record?
+      = link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'

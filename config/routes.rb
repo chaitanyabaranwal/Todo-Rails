@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'tasks#index'
 
-  resources :users
+  resources :users, :except => [:show, :index]
   resources :sessions, only: [:new, :create, :destroy, :index]
   resources :categories, :except => [:show]
   resources :tasks, :except => [:show] do

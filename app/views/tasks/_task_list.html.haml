@@ -1,10 +1,10 @@
 %table.table.table-hover
   %thead.thead-light
     %tr
+      %th
       %th Name
       %th Due Date
       %th Categories
-      %th Completed
       %th
       %th
   %tbody
@@ -14,14 +14,14 @@
       - tasks.each do |task|
         %tr
           %td
-            %strong= task.name
-          %td.text-info= task.due_date
-          %td
-            - task.categories.each do |c|
-              %span.badge.badge-pill.badge-dark= c.name
-          %td
             .container
               = check_box_tag(:completed, !task.completed, task.completed, data: { remote: true, url: url_for(action: :toggle, id: task.id), method: :post })
+          %td
+            %strong= task.name
+          %td.text-info= task.due_date
+          %td.badge_list
+            - task.categories.each do |c|
+              %span.badge.badge-pill.badge-dark= c.name
           %td
             = link_to 'Delete', task_path(task), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete task '#{task.name}'?"}
           %td

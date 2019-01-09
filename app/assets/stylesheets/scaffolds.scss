@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+
+tr {
+    text-align: center;
+}
+
+.badge_list {
+    max-width: 150px;
+    overflow-wrap: normal;
+}
+
+.description {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

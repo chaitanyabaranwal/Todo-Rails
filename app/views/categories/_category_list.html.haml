@@ -14,8 +14,9 @@
         %tr
           %td
             %strong= category.name
-          %td.text-info= category.description
-          %td
+          %td.description.text-info{ 'data-toggle' => 'tooltip', 'title' => category.description}
+            = category.description
+          %td.badge_list
             - category.tasks.each do |t|
               %span.badge.badge-pill.badge-dark= t.name
           %td
